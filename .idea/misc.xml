@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/choose_exercise.xml" value="0.490036231884058" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/log_in.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/my_page.xml" value="0.3265625" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/plank_explain.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/plank_finished.xml" value="0.3265625" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/plank_recording_video.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/profile_setting.xml" value="0.5" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/pushup_explain.xml" value="0.5536458333333333" />
@@ -16,6 +18,7 @@
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/squat_finished.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/squat_recording_video.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/survey.xml" value="0.5" />
+        <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/when_turn_on.xml" value="0.3265625" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/HellinProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.36041666666666666" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/HellinProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.36041666666666666" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/HellinProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
