@@ -10,4 +10,8 @@
     <string name="todo">TODO</string>
     <string name="todo">TODO</string>
     <string name="survey">설문하기</string>
+    <string name="sex">성별</string>
+    <string name="kg">몸무게(kg)</string>
+    <string name="cm">키(cm)</string>
+    <string name="birthday">출생년도</string>
 </resources>
