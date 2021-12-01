@@ -59,10 +59,13 @@
         <entry key="..\:/Users/mason/Documents/GitHub/HellinProject/app/src/main/res/layout/squat_recording_video.xml" value="0.36770833333333336" />
         <entry key="..\:/Users/mason/Documents/GitHub/HellinProject/app/src/main/res/layout/survey.xml" value="0.25" />
         <entry key="..\:/Users/mason/Documents/GitHub/HellinProject/app/src/main/res/layout/when_turn_on.xml" value="0.36770833333333336" />
+        <entry key="..\:/Users/oan21/Desktop/HellinProject/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/oan21/Desktop/HellinProject/app/src/main/res/layout/activity_splash.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/oan21/Desktop/HellinProject/app/src/main/res/layout/log_in.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
