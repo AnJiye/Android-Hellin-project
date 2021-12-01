@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/log_in_background">
@@ -10,12 +11,28 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
         android:text=" 핼 린 이\n   집 사"
         android:textColor="@color/white"
-        android:textSize="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/imhyeminregular"
+        android:textSize="50dp"
+        android:layout_marginBottom="100dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/google_sign_in_button"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_signin_google"
+        android:text="@string/signin_google"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/facebook_login_button"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_signin_facebook"
+        android:text="@string/signin_facebook"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"/>
+
+
+</LinearLayout>

@@ -1,4 +1,6 @@
 <resources>
+    <string name="signin_google">Google login</string>
+    <string name="signin_facebook">Facebook login</string>
     <string name="app_name">HellinProject</string>
     <string name="ask_name">닉네임을 입력해주세요.</string>
     <string name="frofile_setting">프로필 설정</string>
