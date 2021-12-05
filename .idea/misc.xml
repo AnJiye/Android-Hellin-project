@@ -4,13 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/drawable/layout_background.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/activity_camera.xml" value="0.3515625" />
+        <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/activity_launch.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/activity_survey.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/choose_exercise.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/explain_plank.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/explain_pushup.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/explain_squat.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/my_page.xml" value="0.25815217391304346" />
+        <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/profile_setting.xml" value="0.22239583333333332" />
+        <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/recording_video_plank.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/setting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/show_work_out_done_plank.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ADMIN/Desktop/HellinProject/app/src/main/res/layout/survey.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/choose_exercise.xml" value="0.490036231884058" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/log_in.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/my_page.xml" value="0.3265625" />
