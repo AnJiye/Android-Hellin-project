@@ -1,6 +1,5 @@
 package com.example.hellinproject
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,11 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_login.*
-import android.content.pm.PackageManager
 
-import android.content.pm.PackageInfo
-import android.util.Base64
-import android.util.Log
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -26,9 +21,6 @@ import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
-import java.lang.Exception
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 import java.util.*
 
 
@@ -69,6 +61,12 @@ class LoginActivity : AppCompatActivity() {
         callbackManager = CallbackManager.Factory.create()
 
 //        printHashKey()
+    }
+
+    // 자동 로그인
+    override fun onStart() {
+        super.onStart()
+        moveMainPage(auth?.currentUser)
     }
 
     // googleSignInClient를 signInIntent 메소드를 통해서 signInIntent를 만들고, startActivityForResult에 전달

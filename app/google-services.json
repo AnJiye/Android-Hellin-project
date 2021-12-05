@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "353497376762",
+    "project_id": "hellinproject",
+    "storage_bucket": "hellinproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353497376762:android:8c2cafc37c12242b1ee643",
+        "android_client_info": {
+          "package_name": "com.example.hellinproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353497376762-lvoffors8shjv6t8c1aqpbhl7ufpc7m6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hellinproject",
+            "certificate_hash": "3529e96b4068c4491eb62d32c2efc8c849ebabea"
+          }
+        },
+        {
+          "client_id": "353497376762-p5sgflf136jnhf2cu39bp4ajjri0o8vl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHlgto_8wmUgSjhopkt3Iev_42_N1RhU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353497376762-p5sgflf136jnhf2cu39bp4ajjri0o8vl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
