@@ -40,7 +40,7 @@
     <ImageButton
         android:id="@+id/plank_start_btn"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="110dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/button_start" />

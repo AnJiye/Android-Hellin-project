@@ -22,7 +22,7 @@
         android:layout_width="352dp"
         android:layout_height="212dp"
         android:layout_margin="6dp"
-        android:background="@drawable/layout_background"
+        android:background="@drawable/layout_border_background"
         android:elevation="10dp"
         android:orientation="vertical"
         android:padding="6dp" >
@@ -178,7 +178,7 @@
     <ImageButton
         android:id="@+id/squat_btn"
         android:layout_width="352dp"
-        android:layout_height="94dp"
+        android:layout_height="95dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/squat_button"
@@ -187,7 +187,7 @@
     <ImageButton
         android:id="@+id/plank_btn"
         android:layout_width="352dp"
-        android:layout_height="94dp"
+        android:layout_height="95dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/plank_button" />
@@ -195,7 +195,7 @@
     <ImageButton
         android:id="@+id/pushup_btn"
         android:layout_width="352dp"
-        android:layout_height="94dp"
+        android:layout_height="95dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/pushup_button" />
