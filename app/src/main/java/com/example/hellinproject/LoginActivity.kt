@@ -63,11 +63,11 @@ class LoginActivity : AppCompatActivity() {
 //        printHashKey()
     }
 
-    // 자동 로그인
+    /*// 자동 로그인
     override fun onStart() {
         super.onStart()
         moveMainPage(auth?.currentUser)
-    }
+    }*/
 
     // googleSignInClient를 signInIntent 메소드를 통해서 signInIntent를 만들고, startActivityForResult에 전달
     // 새 액티비티를 열고, 결과 값 전달 => onActivityResult()가 결과 값 받음
