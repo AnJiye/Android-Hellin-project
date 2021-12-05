@@ -17,13 +17,14 @@
             android:background="@android:color/transparent"
             android:src="@drawable/back_btn"
             android:layout_marginLeft="10dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="플랭크"
-            android:textSize="25sp"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="25sp" />
     </RelativeLayout>
 
     <LinearLayout
