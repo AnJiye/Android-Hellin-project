@@ -1,5 +1,6 @@
 package com.example.hellinproject
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // 오늘 날짜
         today_textview.text = now.toString()
+
+        // 스쿼트 버튼
+        squat_btn.setOnClickListener {
+            val intent = Intent(this, ExplainSquatActivity::class.java)
+            startActivity(intent)
+        }
+        // 플랭크 버튼
+        plank_btn.setOnClickListener {
+            val intent = Intent(this, ExplainPlankActivity::class.java)
+            startActivity(intent)
+        }
+        // 푸시업 버튼
+        pushup_btn.setOnClickListener {
+            val intent = Intent(this, ExplainPushupActivity::class.java)
+            startActivity(intent)
+        }
+        // 마이페이지
+        mypage_btn.setOnClickListener {
+            val intent = Intent(this, MypageActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

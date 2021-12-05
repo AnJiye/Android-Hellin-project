@@ -3,6 +3,8 @@
     package="com.example.hellinproject">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -26,6 +28,11 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+
+        <activity android:name=".ExplainPlankActivity"/>
+        <activity android:name=".ExplainPushupActivity"/>
+        <activity android:name=".ExplainSquatActivity"/>
+        <activity android:name=".MypageActivity"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
