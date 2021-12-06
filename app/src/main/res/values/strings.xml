@@ -17,4 +17,7 @@
     <string name="kg">몸무게(kg)</string>
     <string name="cm">키(cm)</string>
     <string name="birthday">출생년도</string>
+    <string name="squat_explain">스쿼트(squat)는 웨이트 트레이닝의 가장 대표적인 운동 중 하나이다.하반신의 대퇴사두근과 하퇴삼두근, 대둔근, 중전근 등의 근육을 성장시키는 운동으로, 하체의 근육량 증가에 커다란 효과가 있다.\n\n잘못된 자세 또는 무리한 중량으로 행할 경우 무릎 부상의 위험이 크다. 무릎을 구부릴 때는 무릎이 앞으로 돌출되어 무게중심이 앞으로 쏠리지 않도록 주의해야 하며, 허리를 구부리지 말고 엉덩이를 뒤로 뺀 자세로 시행하자.</string>
+    <string name="push_up_explain">팔굽혀펴기 또는 푸쉬업(push-up, press-up)은 대표적인 근력 운동 중 하나이다. 엎드린 상태에서 전신의 체중을 두 손과 두 발가락의 4개소에 집중하여 양팔을 늘리는 힘에 의해 신체를 올린다.\n가슴근육, 어깨, 삼두근 등을 발달시킨다.</string>
+    <string name="plank_explain">플랭크(plank, front hold, hover, abdominal bridge)는 가능한 최대 시간 동안 팔굽혀펴기와 비슷한 자세를 유지하는 것을 수반하는 등척성 체간근 근력 운동이다.\n\n요통 개선, 코어 근육 활성화, 신진대사 향상, 유연성 증가, 자세 교정 등의 효과가 있다.</string>
 </resources>

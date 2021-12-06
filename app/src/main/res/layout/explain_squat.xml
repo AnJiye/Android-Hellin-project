@@ -9,34 +9,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp">
+
         <ImageButton
             android:id="@+id/back_btn"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:scaleType="fitXY"
+            android:layout_marginLeft="10dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/back_btn"
-            android:layout_marginLeft="10dp"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/back_btn" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="스쿼트"
-            android:textSize="25sp"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="25sp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="338dp"
         android:layout_weight="1"
         android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="운동 설명"/>
+
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="271dp"
+            android:src="@drawable/squat_bad"
+            android:layout_marginRight="50dp"
+            />
+
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="271dp"
+            android:src="@drawable/squat_good" />
+
+
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/squat_explain"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        />
     <ImageButton
         android:id="@+id/squat_start_btn"
         android:layout_width="match_parent"

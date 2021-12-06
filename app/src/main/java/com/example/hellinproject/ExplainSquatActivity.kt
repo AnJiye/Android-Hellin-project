@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.explain_squat.*
 class ExplainSquatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.explain_squat)
+        setContentView(R.layout.explain_plank)
 
         squat_start_btn.setOnClickListener {
             val intent = Intent(this, LaunchActivity::class.java)

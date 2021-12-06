@@ -17,24 +17,43 @@
             android:background="@android:color/transparent"
             android:src="@drawable/back_btn"
             android:layout_marginLeft="10dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="푸쉬업"
-            android:textSize="25sp"
+            android:text="플랭크"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="25sp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/pushup_bad"
+            android:layout_marginBottom="20dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/pushup_good"
+            android:layout_marginBottom="20dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="운동 설명"/>
+            android:text="@string/push_up_explain"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
     <ImageButton
