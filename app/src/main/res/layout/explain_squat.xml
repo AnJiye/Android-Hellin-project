@@ -30,7 +30,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="338dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center">
 
@@ -38,28 +38,36 @@
             android:layout_width="170dp"
             android:layout_height="271dp"
             android:src="@drawable/squat_bad"
-            android:layout_marginRight="50dp"
-            />
+            android:layout_marginRight="50dp" />
 
         <ImageView
             android:layout_width="170dp"
             android:layout_height="271dp"
             android:src="@drawable/squat_good" />
 
-
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/squat_explain"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        android:gravity ="center"
+        android:fillViewport="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/scrollView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/squat_explain"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+    </ScrollView>
+
     <ImageButton
         android:id="@+id/squat_start_btn"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="100dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/button_start" />
