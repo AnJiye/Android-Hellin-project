@@ -3,7 +3,6 @@ package com.example.hellinproject
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hellinproject.camera.LaunchActivity
 import com.example.hellinproject.posenet.CameraActivity
 import kotlinx.android.synthetic.main.explain_plank.*
 
