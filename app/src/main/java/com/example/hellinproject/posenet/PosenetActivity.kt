@@ -416,7 +416,7 @@ class PosenetActivity :
 
       // Create rotated version for portrait display
       val rotateMatrix = Matrix()
-      rotateMatrix.postRotate(90.0f)
+      rotateMatrix.postRotate(0.0f)
 
       val rotatedBitmap = Bitmap.createBitmap(
         imageBitmap, 0, 0, previewWidth, previewHeight,
@@ -532,24 +532,24 @@ class PosenetActivity :
       }
     }
 
-    canvas.drawText(
-      "Score: %.2f".format(person.score),
-      (15.0f * widthRatio),
-      (30.0f * heightRatio + bottom),
-      paint
-    )
-    canvas.drawText(
-      "Device: %s".format(posenet.device),
-      (15.0f * widthRatio),
-      (50.0f * heightRatio + bottom),
-      paint
-    )
-    canvas.drawText(
-      "Time: %.2f ms".format(posenet.lastInferenceTimeNanos * 1.0f / 1_000_000),
-      (15.0f * widthRatio),
-      (70.0f * heightRatio + bottom),
-      paint
-    )
+//    canvas.drawText(
+//      "Score: %.2f".format(person.score),
+//      (15.0f * widthRatio),
+//      (30.0f * heightRatio + bottom),
+//      paint
+//    )
+//    canvas.drawText(
+//      "Device: %s".format(posenet.device),
+//      (15.0f * widthRatio),
+//      (50.0f * heightRatio + bottom),
+//      paint
+//    )
+//    canvas.drawText(
+//      "Time: %.2f ms".format(posenet.lastInferenceTimeNanos * 1.0f / 1_000_000),
+//      (15.0f * widthRatio),
+//      (70.0f * heightRatio + bottom),
+//      paint
+//    )
 
     // Draw!
     surfaceHolder!!.unlockCanvasAndPost(canvas)
