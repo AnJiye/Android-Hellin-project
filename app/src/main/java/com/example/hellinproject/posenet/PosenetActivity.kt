@@ -236,7 +236,7 @@ class PosenetActivity :
   ) {
     if (requestCode == REQUEST_CAMERA_PERMISSION) {
       if (allPermissionsGranted(grantResults)) {
-        ErrorDialog.newInstance(getString(R.string.tfe_pn_request_permission))
+        ErrorDialog.newInstance("This app needs camera permission.")
           .show(childFragmentManager, FRAGMENT_DIALOG)
       }
     } else {
@@ -296,7 +296,7 @@ class PosenetActivity :
     } catch (e: NullPointerException) {
       // Currently an NPE is thrown when the Camera2API is used but not supported on the
       // device this code runs.
-      ErrorDialog.newInstance(getString(R.string.tfe_pn_camera_error))
+      ErrorDialog.newInstance("This device doesn't support Camera2 API.")
         .show(childFragmentManager, FRAGMENT_DIALOG)
     }
   }
@@ -305,14 +305,14 @@ class PosenetActivity :
    * Opens the camera specified by [PosenetActivity.cameraId].
    */
   private fun openCamera() {
-    val permissionCamera = getContext()!!.checkPermission(
+    val permissionCamera = requireContext().checkPermission(
       Manifest.permission.CAMERA, Process.myPid(), Process.myUid()
     )
     if (permissionCamera != PackageManager.PERMISSION_GRANTED) {
       requestCameraPermission()
     }
     setUpCameraOutputs()
-    val manager = activity!!.getSystemService(Context.CAMERA_SERVICE) as CameraManager
+    val manager = requireActivity().getSystemService(Context.CAMERA_SERVICE) as CameraManager
     try {
       // Wait for camera to open - 2.5 seconds is sufficient
       if (!cameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {
@@ -646,8 +646,8 @@ class PosenetActivity :
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
       AlertDialog.Builder(activity)
-        .setMessage(arguments!!.getString(ARG_MESSAGE))
-        .setPositiveButton(android.R.string.ok) { _, _ -> activity!!.finish() }
+        .setMessage(requireArguments().getString(ARG_MESSAGE))
+        .setPositiveButton(android.R.string.ok) { _, _ -> requireActivity().finish() }
         .create()
 
     companion object {
