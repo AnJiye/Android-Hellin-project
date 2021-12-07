@@ -38,28 +38,35 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:src="@drawable/pushup_bad"
-            android:layout_marginBottom="20dp"/>
+            android:src="@drawable/pushup_bad" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:src="@drawable/pushup_good"
-            android:layout_marginBottom="20dp"/>
+            android:src="@drawable/pushup_good" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/push_up_explain"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity ="center"
+            android:fillViewport="true"
+            android:layout_marginTop="15dp"
+            android:id="@+id/scrollView">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/push_up_explain"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </ScrollView>
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/pushup_start_btn"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="100dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/button_start" />

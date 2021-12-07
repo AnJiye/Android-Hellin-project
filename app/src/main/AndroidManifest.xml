@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hellinproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,15 @@
         android:roundIcon="@mipmap/yoga_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HellinProject">
+        <activity
+            android:name=".RecordingVideoSquatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecordingVideoPushupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecordingVideoPlankActivity"
+            android:exported="false" />
         <activity
             android:name=".camera.CameraActivity"
             android:exported="false" />
@@ -28,6 +40,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,21 +49,19 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-
-        <activity android:name=".ExplainPlankActivity"/>
-        <activity android:name=".ExplainPushupActivity"/>
-        <activity android:name=".ExplainSquatActivity"/>
-        <activity android:name=".MypageActivity"/>
+            android:exported="true" />
+        <activity android:name=".ExplainPlankActivity" />
+        <activity android:name=".ExplainPushupActivity" />
+        <activity android:name=".ExplainSquatActivity" />
+        <activity android:name=".MypageActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+            android:value="@string/facebook_app_id" />
 
         <activity
             android:name="com.facebook.FacebookActivity"
-            android:configChanges= "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
@@ -64,7 +75,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

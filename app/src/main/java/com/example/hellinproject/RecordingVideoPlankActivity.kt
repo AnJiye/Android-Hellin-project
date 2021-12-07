@@ -5,16 +5,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hellinproject.camera.LaunchActivity
 import kotlinx.android.synthetic.main.explain_plank.*
+import kotlinx.android.synthetic.main.recording_video_plank.*
 
-class ExplainPlankActivity : AppCompatActivity() {
+class RecordingVideoPlankActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.explain_plank)
+        setContentView(R.layout.recording_video_plank)
 
-        plank_start_btn.setOnClickListener {
-            val intent = Intent(this, LaunchActivity::class.java)
-            startActivity(intent)
-            println("버튼을 눌렀습니다.")
+        pause_btn.setOnClickListener {
+            // 녹화 일시정지
+        }
+
+        stop_btn.setOnClickListener {
+            // 녹화 정지 및 운동 기록
         }
     }
 }

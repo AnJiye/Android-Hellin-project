@@ -6,6 +6,7 @@
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/activity_launch.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/activity_login.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/activity_main.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/activity_recording_video_plank.xml" value="0.315625" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/activity_splash.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/activity_survey.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/choose_exercise.xml" value="0.490036231884058" />
@@ -21,10 +22,10 @@
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/pushup_explain.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/pushup_finished.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/pushup_recording_video.xml" value="0.5536458333333333" />
-        <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/recording_video_plank.xml" value="0.4859375" />
+        <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/recording_video_plank.xml" value="0.33" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/recording_video_pushup.xml" value="0.3265625" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/recording_video_squat.xml" value="0.3265625" />
-        <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/setting.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/setting.xml" value="0.33" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/show_work_out_done_plank.xml" value="0.3265625" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/show_work_out_done_pushup.xml" value="0.3265625" />
         <entry key="..\:/Users/antmd/AndroidStudioProjects/HellinProject/app/src/main/res/layout/show_work_out_done_squat.xml" value="0.3265625" />
