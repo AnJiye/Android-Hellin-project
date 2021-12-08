@@ -7,15 +7,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/log_in_background">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" 핼 린 이\n   집 사"
-        android:textColor="@color/white"
-        android:fontFamily="@font/imhyeminregular"
-        android:textSize="50dp"
-        android:layout_marginBottom="100dp"/>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="90dp"
+        android:src="@drawable/hellin_logo" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/google_sign_in_button"
@@ -30,7 +26,7 @@
         android:layout_height="53.5dp"
         android:background="@drawable/facebook_login"
         android:textColor="@color/white"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="15dp"/>
 
 
 </LinearLayout>
