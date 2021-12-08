@@ -3,7 +3,6 @@ package com.example.hellinproject
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hellinproject.camera.LaunchActivity
 import kotlinx.android.synthetic.main.profile_setting.*
 
 class ProfileSettingActivity : AppCompatActivity() {
