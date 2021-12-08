@@ -1,12 +1,11 @@
 package com.example.hellinproject
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -15,6 +14,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.hellinproject.dto.UserDTO
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
@@ -27,8 +28,10 @@ class ProfileSettingActivity : AppCompatActivity() {
     var storage : FirebaseStorage? = null
     var photoUri : Uri? = null
     var auth : FirebaseAuth? = null
-    var firestore : FirebaseFirestore? = null
+//    var firestore : FirebaseFirestore? = null
+    var database : FirebaseDatabase? = null
     var inputNickname : String? = null
+    var userDTO = UserDTO()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +39,8 @@ class ProfileSettingActivity : AppCompatActivity() {
 
         storage = FirebaseStorage.getInstance()
         auth = FirebaseAuth.getInstance()
-        firestore = FirebaseFirestore.getInstance()
+//        firestore = FirebaseFirestore.getInstance()
+        database = FirebaseDatabase.getInstance()
 
         profile_setting_btn.setOnClickListener {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1)
@@ -51,6 +55,7 @@ class ProfileSettingActivity : AppCompatActivity() {
         profile_next_btn.setOnClickListener {
             profileUpload()
             val intent = Intent(this, SurveyActivity::class.java)
+//            intent.putExtra("USER", userDTO)
             startActivity(intent)
         }
     }
@@ -62,7 +67,6 @@ class ProfileSettingActivity : AppCompatActivity() {
                 // This is path to the selected image
                 photoUri = data?.data
                 Glide.with(this).load(photoUri).apply(RequestOptions.circleCropTransform()).into(profile_image)
-//                profile_image.setImageURI(photoUri)
             } else {
                 // exit the ProfileSettingActivity if you leave the album without selecting it
                 finish()
@@ -75,17 +79,12 @@ class ProfileSettingActivity : AppCompatActivity() {
         var imageFileName = "IMAGE_" + timestamp + "_.png"
 
         var storageRef = storage?.reference?.child("images")?.child(imageFileName)
+        var databaseRef : DatabaseReference = database!!.reference
 
         // File upload
-//        storageRef?.putFile(photoUri!!)?.addOnSuccessListener {
-////            Toast.makeText(this, "Upload success", Toast.LENGTH_LONG).show()
-//            storageRef.downloadUrl.addOnSuccessListener { uri ->
-
         storageRef?.putFile(photoUri!!)?.continueWithTask { task: Task<UploadTask.TaskSnapshot> ->
             return@continueWithTask storageRef.downloadUrl
         }?.addOnSuccessListener { uri ->
-            var userDTO = UserDTO()
-
             // Insert downloadUrl of image
             userDTO.userProfile = uri.toString()
 
@@ -99,7 +98,8 @@ class ProfileSettingActivity : AppCompatActivity() {
             // Insert timestamp
             userDTO.timestamp = System.currentTimeMillis()
 
-            firestore?.collection("images")?.document()?.set(userDTO)
+//            firestore?.collection("users")?.document(userDTO.uid!!)?.set(userDTO)
+            databaseRef.child("users").child(userDTO.uid!!).setValue(userDTO)
 
             setResult(Activity.RESULT_OK)
 

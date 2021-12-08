@@ -3,26 +3,48 @@ package com.example.hellinproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.example.hellinproject.dto.UserDTO
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.auth.User
 import kotlinx.android.synthetic.main.activity_survey.*
 
 class SurveyActivity : AppCompatActivity() {
+//    var firestore : FirebaseFirestore? = null
+    var database : FirebaseDatabase? = null
+    var userDTO = UserDTO()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey)
 
-        survey_next_btn.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+//        firestore = FirebaseFirestore.getInstance()
+        database = FirebaseDatabase.getInstance()
+//        var databaseRef : DatabaseReference = database!!.reference
+//        val intent: Intent = getIntent()
+
+//        var userDTO = intent.getSerializableExtra("USER") as UserDTO
+//        Log.d("Log1", userDTO.toString())
 
         setupSpinnerBirth()
         setupSpinnerGender()
         setupSpinnerHeight()
         setupSpinnerWeight()
         setupSpinnerHandler()
+
+        survey_next_btn.setOnClickListener {
+//            firestore?.collection("users")?.document(userDTO.uid!!)?.set(userDTO)
+//            Log.d("Log2", userDTO.toString())
+//            databaseRef.child("users").child(userDTO!!.uid!!).setValue(userDTO)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupSpinnerGender() {
@@ -62,30 +84,36 @@ class SurveyActivity : AppCompatActivity() {
     }
 
     private fun setupSpinnerHandler() {
+        var databaseRef : DatabaseReference = database!!.reference
+        var uid = FirebaseAuth.getInstance().currentUser?.uid
         spinner_gender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var userGender = spinner_gender.getItemAtPosition(p2)
+                userDTO.gender = spinner_gender.getItemAtPosition(p2) as String?
+                databaseRef.child("users").child(uid!!).child("gender").setValue(userDTO.gender)
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
         spinner_birth.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var userBirth = spinner_birth.getItemAtPosition(p2)
+                userDTO.birth = spinner_birth.getItemAtPosition(p2) as Int?
+                databaseRef.child("users").child(uid!!).child("birth").setValue(userDTO.birth)
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
         spinner_height.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var userHeight = spinner_height.getItemAtPosition(p2)
+                userDTO.height = spinner_height.getItemAtPosition(p2) as Int?
+                databaseRef.child("users").child(uid!!).child("height").setValue(userDTO.height)
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
         spinner_weight.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var userWeight = spinner_weight.getItemAtPosition(p2)
+                userDTO.weight = spinner_weight.getItemAtPosition(p2) as Int?
+                databaseRef.child("users").child(uid!!).child("weight").setValue(userDTO.weight)
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }

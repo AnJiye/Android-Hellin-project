@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "353497376762",
+    "firebase_url": "https://hellinproject-default-rtdb.firebaseio.com",
     "project_id": "hellinproject",
     "storage_bucket": "hellinproject.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "353497376762-akfars8p5778vikp5a43bip7l9obppoa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hellinproject",
+            "certificate_hash": "77e0d452ac42b16ea355083b9066a8c36965fc83"
+          }
+        },
         {
           "client_id": "353497376762-lvoffors8shjv6t8c1aqpbhl7ufpc7m6.apps.googleusercontent.com",
           "client_type": 1,
