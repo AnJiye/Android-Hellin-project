@@ -19,18 +19,16 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/google_sign_in_button"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_signin_google"
-        android:text="@string/signin_google"
+        android:layout_width="305dp"
+        android:layout_height="53.5dp"
+        android:background="@drawable/google_login"
         android:textColor="@color/white" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/facebook_login_button"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_signin_facebook"
-        android:text="@string/signin_facebook"
+        android:layout_width="305dp"
+        android:layout_height="53.5dp"
+        android:background="@drawable/facebook_login"
         android:textColor="@color/white"
         android:layout_marginTop="30dp"/>
 
