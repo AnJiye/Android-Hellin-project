@@ -1,6 +1,7 @@
 package com.example.hellinproject
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -9,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.hellinproject.dto.UserDTO
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -58,7 +61,8 @@ class ProfileSettingActivity : AppCompatActivity() {
             if(resultCode == Activity.RESULT_OK) {
                 // This is path to the selected image
                 photoUri = data?.data
-                profile_image.setImageURI(photoUri)
+                Glide.with(this).load(photoUri).apply(RequestOptions.circleCropTransform()).into(profile_image)
+//                profile_image.setImageURI(photoUri)
             } else {
                 // exit the ProfileSettingActivity if you leave the album without selecting it
                 finish()
