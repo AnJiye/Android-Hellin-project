@@ -37,7 +37,7 @@ public class LaunchActivity extends AppCompatActivity {
     private static final String CAMERA_PERMISSION = Manifest.permission.CAMERA;
     private static final int PERMISSION_REQUEST_CODE = 1;
 
-//    private TextView textView;
+    private TextView textView;
     private Classifier cls;
 
     private int previewWidth = 0;
@@ -63,7 +63,7 @@ public class LaunchActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         // 결과 값을 출력할 TextView를 연결
-//        textView = findViewById(R.id.textView);
+        textView = findViewById(R.id.textView);
 
         // 추론에 활용할 Classifier를 생성하여 초기화
         cls = new Classifier(this);
@@ -284,8 +284,8 @@ public class LaunchActivity extends AppCompatActivity {
                 String resultStr = String.format(Locale.ENGLISH,
                 "class : %s, prob : %.2f%%",
                 output.first, output.second * 100);
-//                textView.setText(resultStr);
-                Log.d(TAG, resultStr);
+                textView.setText(resultStr);
+//                Log.d(TAG, resultStr);
             });
         }
         image.close();
