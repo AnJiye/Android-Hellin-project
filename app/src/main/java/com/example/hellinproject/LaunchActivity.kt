@@ -50,10 +50,10 @@ class LaunchActivity : AppCompatActivity() {
     private lateinit var tvClassificationValue1: TextView
     private lateinit var tvClassificationValue2: TextView
     private lateinit var tvClassificationValue3: TextView
-    private lateinit var swClassification: SwitchCompat
-    private lateinit var vClassificationOption: View
+//    private lateinit var swClassification: SwitchCompat
+//    private lateinit var vClassificationOption: View
     private var cameraSource: CameraSource? = null
-    private var isClassifyPose = false
+    private var isClassifyPose = true
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -107,12 +107,12 @@ class LaunchActivity : AppCompatActivity() {
 //        }
 //    }
 
-    private var setClassificationListener =
-        CompoundButton.OnCheckedChangeListener { _, isChecked ->
-            showClassificationResult(isChecked)
-            isClassifyPose = isChecked
-            isPoseClassifier()
-        }
+//    private var setClassificationListener =
+//        CompoundButton.OnCheckedChangeListener { _, isChecked ->
+////            showClassificationResult(isChecked)
+////            isClassifyPose = isChecked
+//            isPoseClassifier()
+//        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,14 +129,22 @@ class LaunchActivity : AppCompatActivity() {
         tvClassificationValue1 = findViewById(R.id.tvClassificationValue1)
         tvClassificationValue2 = findViewById(R.id.tvClassificationValue2)
         tvClassificationValue3 = findViewById(R.id.tvClassificationValue3)
-        swClassification = findViewById(R.id.swPoseClassification)
-        vClassificationOption = findViewById(R.id.vClassificationOption)
+//        swClassification = findViewById(R.id.swPoseClassification)
+//        vClassificationOption = findViewById(R.id.vClassificationOption)
 //        initSpinner()
 //        spnModel.setSelection(modelPos)
-        swClassification.setOnCheckedChangeListener(setClassificationListener)
+
+//        swClassification.setOnCheckedChangeListener(setClassificationListener)
+        isPoseClassifier()
+
         if (!isCameraPermissionGranted()) {
             requestPermission()
         }
+
+//        val visibility = if (isVisible) View.VISIBLE else View.GONE
+//        tvClassificationValue1.visibility = View.VISIBLE
+//        tvClassificationValue2.visibility = View.VISIBLE
+//        tvClassificationValue3.visibility = View.VISIBLE
     }
 
     override fun onStart() {
@@ -213,7 +221,7 @@ class LaunchActivity : AppCompatActivity() {
     }
 
     private fun isPoseClassifier() {
-        cameraSource?.setClassifier(if (isClassifyPose) PoseClassifier.create(this) else null)
+        cameraSource?.setClassifier(PoseClassifier.create(this))
     }
 
     // Initialize spinners to let user select model/accelerator/tracker.
@@ -284,43 +292,48 @@ class LaunchActivity : AppCompatActivity() {
     private fun createPoseEstimator() {
         // For MoveNet MultiPose, hide score and disable pose classifier as the model returns
         // multiple Person instances.
-        val poseDetector = when (modelPos) {
+        val poseDetector =
+//            {
+//            showPoseClassifier(true)
+//            MoveNet.create(this, device, ModelType.Lightning)
+//            }
+            when (modelPos) {
             0 -> {
                 // MoveNet Lightning (SinglePose)
-                showPoseClassifier(true)
+//                showPoseClassifier(true)
 //                showDetectionScore(true)
 //                showTracker(false)
                 MoveNet.create(this, device, ModelType.Lightning)
             }
             1 -> {
                 // MoveNet Thunder (SinglePose)
-                showPoseClassifier(true)
+//                showPoseClassifier(true)
 //                showDetectionScore(true)
 //                showTracker(false)
                 MoveNet.create(this, device, ModelType.Thunder)
             }
-            2 -> {
-                /*// MoveNet (Lightning) MultiPose
-                showPoseClassifier(false)
-                showDetectionScore(false)
-                // Movenet MultiPose Dynamic does not support GPUDelegate
-                if (device == Device.GPU) {
-                    showToast("Movenet MultiPose does not support GPU. Fallback to CPU.")
-                }
-                showTracker(true)
-                MoveNetMultiPose.create(
-                    this,
-                    device,
-                    Type.Dynamic
-                )*/
-            }
-            3 -> {
-                // PoseNet (SinglePose)
-                /*showPoseClassifier(true)
-                showDetectionScore(true)
-                showTracker(false)
-                PoseNet.create(this, device)*/
-            }
+//            2 -> {
+//                /*// MoveNet (Lightning) MultiPose
+//                showPoseClassifier(false)
+//                showDetectionScore(false)
+//                // Movenet MultiPose Dynamic does not support GPUDelegate
+//                if (device == Device.GPU) {
+//                    showToast("Movenet MultiPose does not support GPU. Fallback to CPU.")
+//                }
+//                showTracker(true)
+//                MoveNetMultiPose.create(
+//                    this,
+//                    device,
+//                    Type.Dynamic
+//                )*/
+//            }
+//            3 -> {
+//                // PoseNet (SinglePose)
+//                /*showPoseClassifier(true)
+//                showDetectionScore(true)
+//                showTracker(false)
+//                PoseNet.create(this, device)*/
+//            }
             else -> {
                 null
             }
@@ -331,12 +344,12 @@ class LaunchActivity : AppCompatActivity() {
     }
 
     // Show/hide the pose classification option.
-    private fun showPoseClassifier(isVisible: Boolean) {
-        vClassificationOption.visibility = if (isVisible) View.VISIBLE else View.GONE
-        if (!isVisible) {
-            swClassification.isChecked = false
-        }
-    }
+//    private fun showPoseClassifier(isVisible: Boolean) {
+//        vClassificationOption.visibility = if (isVisible) View.VISIBLE else View.GONE
+//        if (!isVisible) {
+//            swClassification.isChecked = false
+//        }
+//    }
 
     // Show/hide the detection score.
 //    private fun showDetectionScore(isVisible: Boolean) {
@@ -344,12 +357,13 @@ class LaunchActivity : AppCompatActivity() {
 //    }
 
     // Show/hide classification result.
-    private fun showClassificationResult(isVisible: Boolean) {
-        val visibility = if (isVisible) View.VISIBLE else View.GONE
-        tvClassificationValue1.visibility = visibility
-        tvClassificationValue2.visibility = visibility
-        tvClassificationValue3.visibility = visibility
-    }
+    // 없어도 됨
+//    private fun showClassificationResult(isVisible: Boolean) {
+//        val visibility = if (isVisible) View.VISIBLE else View.GONE
+//        tvClassificationValue1.visibility = visibility
+//        tvClassificationValue2.visibility = visibility
+//        tvClassificationValue3.visibility = visibility
+//    }
 
     // Show/hide the tracking options.
 //    private fun showTracker(isVisible: Boolean) {
@@ -383,9 +397,9 @@ class LaunchActivity : AppCompatActivity() {
         }
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
+//    private fun showToast(message: String) {
+//        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+//    }
 
     /**
      * Shows an error message dialog.

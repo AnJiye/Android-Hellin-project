@@ -24,12 +24,6 @@
     <string name="tfe_pe_tv_classification_value">- %s</string>
     <string name="tfe_pe_tv_score">Score: %.2f</string>
 
-    <string-array name="tfe_pe_tracker_array">
-        <item>Off</item>
-        <item>BoundingBox</item>
-        <item>Keypoint</item>
-    </string-array>
-
     <string-array name="spinner_gender">
         <item>남</item>
         <item>여</item>

@@ -27,41 +27,46 @@
             android:textSize="25sp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <View
+        android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:layout_marginVertical="15dp"/>
 
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:src="@drawable/pushup_bad" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:src="@drawable/pushup_good" />
-
-        <ScrollView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:orientation="vertical"
+        android:gravity ="center"
+        android:id="@+id/scrollView">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity ="center"
-            android:fillViewport="true"
-            android:layout_marginTop="15dp"
-            android:id="@+id/scrollView">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:src="@drawable/pushup_bad"
+                android:layout_marginBottom="10dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:src="@drawable/pushup_good"
+                android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/push_up_explain"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
-        </ScrollView>
-    </LinearLayout>
+                android:textSize="16sp"
+                android:layout_marginHorizontal="15dp"/>
+        </LinearLayout>
+    </ScrollView>
 
     <ImageButton
         android:id="@+id/pushup_start_btn"

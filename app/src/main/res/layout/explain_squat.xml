@@ -28,6 +28,13 @@
             android:textSize="25sp" />
     </RelativeLayout>
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:layout_marginVertical="15dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +68,8 @@
             android:layout_height="wrap_content"
             android:text="@string/squat_explain"
             android:textSize="16sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="15dp"/>
     </ScrollView>
 
     <ImageButton

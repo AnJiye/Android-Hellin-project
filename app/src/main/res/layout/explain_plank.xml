@@ -27,47 +27,52 @@
             android:textSize="25sp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <View
+        android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:layout_marginVertical="15dp"/>
 
-        <ImageView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:orientation="vertical"
+        android:gravity ="center"
+        android:id="@+id/scrollView">
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:src="@drawable/plank_bad"
-            android:layout_marginBottom="20dp"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:src="@drawable/plank_good"
-            android:layout_marginBottom="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:src="@drawable/plank_bad"
+                android:layout_marginBottom="20dp"/>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity ="center"
-            android:fillViewport="true"
-            android:layout_marginTop="15dp"
-            android:id="@+id/scrollView">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:src="@drawable/plank_good"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/plank_explain"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
-        </ScrollView>
-    </LinearLayout>
+                android:textSize="16sp"
+                android:layout_marginHorizontal="15dp"/>
+        </LinearLayout>
+    </ScrollView>
 
     <ImageButton
         android:id="@+id/plank_start_btn"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="100dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/button_start" />
