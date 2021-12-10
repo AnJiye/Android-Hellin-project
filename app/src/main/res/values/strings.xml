@@ -25,4 +25,6 @@
         <item>남</item>
         <item>여</item>
     </string-array>
+
+    <string name="default_profile_url"><![CDATA[https://firebasestorage.googleapis.com/v0/b/hellinproject.appspot.com/o/default_profile.png?alt=media&token=18551a8a–0711–4417-bcae-e79e270ebc25]]></string>
 </resources>
