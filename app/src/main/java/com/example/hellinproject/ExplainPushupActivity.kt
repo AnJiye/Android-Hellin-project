@@ -14,5 +14,10 @@ class ExplainPushupActivity : AppCompatActivity() {
             val intent = Intent(this, LaunchActivity::class.java)
             startActivity(intent)
         }
+
+        back_btn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

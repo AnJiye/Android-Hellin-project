@@ -16,8 +16,11 @@ class ExplainPlankActivity : AppCompatActivity() {
             startActivity(intent)
             // 페이지 recording_video_plank로 이동
             // 카메라 실행
+        }
 
-
+        back_btn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
