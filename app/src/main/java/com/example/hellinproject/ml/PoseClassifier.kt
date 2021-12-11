@@ -67,7 +67,6 @@ class PoseClassifier(
         outputTensor.forEachIndexed { index, score ->
             output.add(Pair(labels[index], score))
         }
-//        Log.d(TAG, output.toString())
         return output
     }
 

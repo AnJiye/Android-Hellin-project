@@ -27,11 +27,14 @@ import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraDevice
 import android.hardware.camera2.CameraManager
 import android.media.ImageReader
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
 import android.view.Surface
 import android.view.SurfaceView
+import com.example.hellinproject.LaunchActivity
 import kotlinx.coroutines.suspendCancellableCoroutine
 import com.example.hellinproject.VisualizationUtils
 import com.example.hellinproject.YuvToRgbConverter
@@ -257,7 +260,6 @@ class CameraSource(
                 if (persons.isNotEmpty()) {
                     classifier?.run {
                         classificationResult = classify(persons[0])
-                        Log.d(TAG, classificationResult.toString())
                     }
                 }
             }

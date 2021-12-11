@@ -6,8 +6,11 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.os.Process
+import android.util.Log
 import android.view.SurfaceView
 import android.view.View
 import android.view.WindowManager
@@ -29,6 +32,8 @@ class LaunchActivity : AppCompatActivity() {
     companion object {
         private const val FRAGMENT_DIALOG = "dialog"
     }
+
+    private val TAG = "[IC]LaunchActivity"
 
     /** A [SurfaceView] for camera preview.   */
     private lateinit var surfaceView: SurfaceView
@@ -183,6 +188,12 @@ class LaunchActivity : AppCompatActivity() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+    var index : String? = null
+    var score : Float? = null
+    var status = "stand"
+    var count = 0
+//    var mediaplayer : MediaPlayer?= null
+
     // open camera
     private fun openCamera() {
         if (isCameraPermissionGranted()) {
@@ -196,9 +207,27 @@ class LaunchActivity : AppCompatActivity() {
                         override fun onDetectedInfo(
                             personScore: Float?,
                             poseLabels: List<Pair<String, Float>>?
+
                         ) {
-//                            tvScore.text = getString(R.string.tfe_pe_tv_score, personScore ?: 0f)
                             poseLabels?.sortedByDescending { it.second }?.let {
+                                var (first, second) = it!!
+                                index = first.first
+                                score = first.second
+
+                                if (index == "stand" && score!! > 0.9) {
+                                    if (status == "squat") {
+                                        count++
+//                                        Log.d(TAG, count.toString())
+                                        var soundTitle = "count${count%10}"
+                                        var res = this@LaunchActivity.resources
+                                        var soundId = res.getIdentifier(soundTitle, "raw", this@LaunchActivity.packageName)
+                                        var mediaplayer = MediaPlayer.create(this@LaunchActivity, soundId).start()
+                                    }
+                                    status = "stand"
+                                } else if (index == "squat" && score!! > 0.9) {
+                                    status = "squat"
+                                }
+
                                 tvClassificationValue1.text = getString(
                                     R.string.tfe_pe_tv_classification_value,
                                     convertPoseLabels(if (it.isNotEmpty()) it[0] else null)
