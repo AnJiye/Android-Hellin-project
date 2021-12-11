@@ -71,7 +71,7 @@
         <entry key="..\:/Users/oan21/Desktop/HellinProject/app/src/main/res/layout/my_page.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/HellinProject/app/src/main/res/layout/when_turn_on.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_camera.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_launch.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_launch.xml" value="0.33" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_my.xml" value="0.36614583333333334" />
@@ -79,14 +79,18 @@
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_setting.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_splash.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/activity_survey.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.25" />
+        <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.33" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/explain_plank.xml" value="0.33" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/explain_pushup.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/explain_squat.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/my_page.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/profile_setting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/recording_video_plank.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/recording_video_squat.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/setting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/show_work_out_done_plank.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/show_work_out_done_pushup.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/oan21/Desktop/project/HellinProject/app/src/main/res/layout/show_work_out_done_squat.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>

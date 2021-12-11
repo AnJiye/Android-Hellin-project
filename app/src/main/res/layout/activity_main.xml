@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="352dp"
-        android:layout_height="212dp"
+        android:layout_height="222dp"
         android:layout_margin="6dp"
         android:background="@drawable/layout_border_background"
         android:elevation="10dp"
@@ -63,10 +63,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_marginVertical="25dp">
+            android:layout_marginTop="25dp">
             <!-- 오늘의 운동 -->
             <LinearLayout
-                android:layout_width="75dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -102,16 +102,18 @@
             </LinearLayout>
             <!-- 소모한 칼로리 -->
             <LinearLayout
-                android:layout_width="75dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginHorizontal="40dp">
+                android:layout_marginHorizontal="35dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="소모한 칼로리"
                     android:textSize="13sp"
+                    android:autoSizeTextType="uniform"
+                    android:singleLine="false"
                     android:layout_marginBottom="10dp"
                     android:textAlignment="center"/>
                 <ImageView
@@ -139,7 +141,7 @@
             </LinearLayout>
             <!-- 정확도 -->
             <LinearLayout
-                android:layout_width="75dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -179,7 +181,7 @@
     <ImageButton
         android:id="@+id/squat_btn"
         android:layout_width="352dp"
-        android:layout_height="95dp"
+        android:layout_height="100dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/squat_button"
@@ -188,7 +190,7 @@
     <ImageButton
         android:id="@+id/plank_btn"
         android:layout_width="352dp"
-        android:layout_height="95dp"
+        android:layout_height="100dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/plank_button" />
@@ -196,7 +198,7 @@
     <ImageButton
         android:id="@+id/pushup_btn"
         android:layout_width="352dp"
-        android:layout_height="95dp"
+        android:layout_height="100dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/pushup_button" />

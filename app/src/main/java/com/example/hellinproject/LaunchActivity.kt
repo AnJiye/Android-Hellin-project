@@ -3,6 +3,8 @@ package com.example.hellinproject
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Process
@@ -21,6 +23,7 @@ import kotlinx.coroutines.launch
 import com.example.hellinproject.camera.CameraSource
 import com.example.hellinproject.data.Device
 import com.example.hellinproject.ml.*
+import kotlinx.android.synthetic.main.activity_launch.*
 
 class LaunchActivity : AppCompatActivity() {
     companion object {
@@ -41,19 +44,11 @@ class LaunchActivity : AppCompatActivity() {
     /** Default device is CPU */
     private var device = Device.CPU
 
-//    private lateinit var tvScore: TextView
-//    private lateinit var tvFPS: TextView
-//    private lateinit var spnDevice: Spinner
-//    private lateinit var spnModel: Spinner
-//    private lateinit var spnTracker: Spinner
-//    private lateinit var vTrackerOption: View
     private lateinit var tvClassificationValue1: TextView
     private lateinit var tvClassificationValue2: TextView
     private lateinit var tvClassificationValue3: TextView
-//    private lateinit var swClassification: SwitchCompat
-//    private lateinit var vClassificationOption: View
     private var cameraSource: CameraSource? = null
-    private var isClassifyPose = true
+//    private var isClassifyPose = true
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -139,6 +134,22 @@ class LaunchActivity : AppCompatActivity() {
 
         if (!isCameraPermissionGranted()) {
             requestPermission()
+        }
+
+        // 종료 버튼
+        stop_btn.setOnClickListener {
+            val intent = Intent(this, ResultSquatActivity::class.java)
+            val dlg: AlertDialog.Builder = AlertDialog.Builder(this@LaunchActivity, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth)
+            dlg.setTitle("정지")
+            dlg.setMessage("운동을 종료하시겠습니까?")
+            dlg.setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+                startActivity(intent)
+                finish()
+            })
+            dlg.setNegativeButton("취소", DialogInterface.OnClickListener { dialogInterface, i ->
+
+            })
+            dlg.show()
         }
 
 //        val visibility = if (isVisible) View.VISIBLE else View.GONE
