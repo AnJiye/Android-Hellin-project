@@ -108,7 +108,8 @@ class CameraSource(
                 yuvConverter.yuvToRgb(image, imageBitmap)
                 // Create rotated version for portrait display
                 val rotateMatrix = Matrix()
-                rotateMatrix.postRotate(90.0f)
+                // 추후 수정하기!!! 기기에 따라서 회전할 수 있도록
+                rotateMatrix.postRotate(270.0f)
 
                 val rotatedBitmap = Bitmap.createBitmap(
                     imageBitmap, 0, 0, PREVIEW_WIDTH, PREVIEW_HEIGHT,
@@ -160,6 +161,8 @@ class CameraSource(
             }, imageReaderHandler)
         }
 
+    //
+
     fun prepareCamera() {
         for (cameraId in cameraManager.cameraIdList) {
             val characteristics = cameraManager.getCameraCharacteristics(cameraId)
@@ -169,7 +172,10 @@ class CameraSource(
             if (cameraDirection != null &&
                 cameraDirection == CameraCharacteristics.LENS_FACING_FRONT
             ) {
-                continue
+//                continue
+                // 전면 카메라 사용
+                this.cameraId = cameraId
+                break
             }
             this.cameraId = cameraId
         }
