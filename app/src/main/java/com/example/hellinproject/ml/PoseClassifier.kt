@@ -17,9 +17,12 @@ limitations under the License.
 package com.example.hellinproject.ml
 
 import android.content.Context
+import android.util.Log
 import org.tensorflow.lite.Interpreter
 import com.example.hellinproject.data.Person
 import org.tensorflow.lite.support.common.FileUtil
+
+private const val TAG = "PoseClassfier"
 
 class PoseClassifier(
     private val interpreter: Interpreter,
@@ -64,6 +67,7 @@ class PoseClassifier(
         outputTensor.forEachIndexed { index, score ->
             output.add(Pair(labels[index], score))
         }
+//        Log.d(TAG, output.toString())
         return output
     }
 

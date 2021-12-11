@@ -56,6 +56,7 @@ class CameraSource(
         private const val TAG = "Camera Source"
     }
 
+    private val TAG = "CameraSource"
     private val lock = Any()
     private var detector: PoseDetector? = null
     private var classifier: PoseClassifier? = null
@@ -256,6 +257,7 @@ class CameraSource(
                 if (persons.isNotEmpty()) {
                     classifier?.run {
                         classificationResult = classify(persons[0])
+                        Log.d(TAG, classificationResult.toString())
                     }
                 }
             }
