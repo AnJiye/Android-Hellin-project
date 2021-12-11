@@ -27,14 +27,11 @@ import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraDevice
 import android.hardware.camera2.CameraManager
 import android.media.ImageReader
-import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
 import android.view.Surface
 import android.view.SurfaceView
-import com.example.hellinproject.LaunchActivity
 import kotlinx.coroutines.suspendCancellableCoroutine
 import com.example.hellinproject.VisualizationUtils
 import com.example.hellinproject.YuvToRgbConverter
@@ -204,14 +201,6 @@ class CameraSource(
             this.classifier = classifier
         }
     }
-
-    /**
-     * Set Tracker for Movenet MuiltiPose model.
-     */
-//    fun setTracker(trackerType: TrackerType) {
-//        isTrackerEnabled = trackerType != TrackerType.OFF
-//        (this.detector as? MoveNetMultiPose)?.setTracker(trackerType)
-//    }
 
     fun resume() {
         imageReaderThread = HandlerThread("imageReaderThread").apply { start() }

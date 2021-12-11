@@ -7,8 +7,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Process
 import android.util.Log
 import android.view.SurfaceView
@@ -17,7 +17,6 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
@@ -27,6 +26,8 @@ import com.example.hellinproject.camera.CameraSource
 import com.example.hellinproject.data.Device
 import com.example.hellinproject.ml.*
 import kotlinx.android.synthetic.main.activity_launch.*
+import java.util.*
+import kotlin.concurrent.timer
 
 class LaunchActivity : AppCompatActivity() {
     companion object {
@@ -34,6 +35,9 @@ class LaunchActivity : AppCompatActivity() {
     }
 
     private val TAG = "[IC]LaunchActivity"
+    private var time = 0
+    private var timerTask : Timer? = null
+    private var isRunning = true
 
     /** A [SurfaceView] for camera preview.   */
     private lateinit var surfaceView: SurfaceView
@@ -53,7 +57,6 @@ class LaunchActivity : AppCompatActivity() {
     private lateinit var tvClassificationValue2: TextView
     private lateinit var tvClassificationValue3: TextView
     private var cameraSource: CameraSource? = null
-//    private var isClassifyPose = true
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -72,69 +75,18 @@ class LaunchActivity : AppCompatActivity() {
                     .show(supportFragmentManager, FRAGMENT_DIALOG)
             }
         }
-//    private var changeModelListener = object : AdapterView.OnItemSelectedListener {
-//        override fun onNothingSelected(parent: AdapterView<*>?) {
-//            // do nothing
-//        }
-//
-//        override fun onItemSelected(
-//            parent: AdapterView<*>?,
-//            view: View?,
-//            position: Int,
-//            id: Long
-//        ) {
-//            changeModel(position)
-//        }
-//    }
-
-//    private var changeDeviceListener = object : AdapterView.OnItemSelectedListener {
-//        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//            changeDevice(position)
-//        }
-//
-//        override fun onNothingSelected(parent: AdapterView<*>?) {
-//            // do nothing
-//        }
-//    }
-
-//    private var changeTrackerListener = object : AdapterView.OnItemSelectedListener {
-//        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//            changeTracker(position)
-//        }
-//
-//        override fun onNothingSelected(parent: AdapterView<*>?) {
-//            // do nothing
-//        }
-//    }
-
-//    private var setClassificationListener =
-//        CompoundButton.OnCheckedChangeListener { _, isChecked ->
-////            showClassificationResult(isChecked)
-////            isClassifyPose = isChecked
-//            isPoseClassifier()
-//        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
         // keep screen on while app is running
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-//        tvScore = findViewById(R.id.tvScore)
-//        tvFPS = findViewById(R.id.tvFps)
-//        spnModel = findViewById(R.id.spnModel)
-//        spnDevice = findViewById(R.id.spnDevice)
-//        spnTracker = findViewById(R.id.spnTracker)
-//        vTrackerOption = findViewById(R.id.vTrackerOption)
+
         surfaceView = findViewById(R.id.surfaceView)
         tvClassificationValue1 = findViewById(R.id.tvClassificationValue1)
         tvClassificationValue2 = findViewById(R.id.tvClassificationValue2)
         tvClassificationValue3 = findViewById(R.id.tvClassificationValue3)
-//        swClassification = findViewById(R.id.swPoseClassification)
-//        vClassificationOption = findViewById(R.id.vClassificationOption)
-//        initSpinner()
-//        spnModel.setSelection(modelPos)
 
-//        swClassification.setOnCheckedChangeListener(setClassificationListener)
         isPoseClassifier()
 
         if (!isCameraPermissionGranted()) {
@@ -143,6 +95,7 @@ class LaunchActivity : AppCompatActivity() {
 
         // 종료 버튼
         stop_btn.setOnClickListener {
+            pause()
             val intent = Intent(this, ResultSquatActivity::class.java)
             val dlg: AlertDialog.Builder = AlertDialog.Builder(this@LaunchActivity, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth)
             dlg.setTitle("정지")
@@ -152,15 +105,46 @@ class LaunchActivity : AppCompatActivity() {
                 finish()
             })
             dlg.setNegativeButton("취소", DialogInterface.OnClickListener { dialogInterface, i ->
-
+                counterStart()
             })
             dlg.show()
         }
 
-//        val visibility = if (isVisible) View.VISIBLE else View.GONE
-//        tvClassificationValue1.visibility = View.VISIBLE
-//        tvClassificationValue2.visibility = View.VISIBLE
-//        tvClassificationValue3.visibility = View.VISIBLE
+        // 일시정지 버튼
+        pause_btn.setOnClickListener {
+            isRunning = !isRunning
+            if (isRunning) counterStart() else pause()
+        }
+
+        val countDown = object : CountDownTimer(1000 * 3, 1000) {
+            override fun onTick(p0: Long) {
+                timer.text = (p0 / 1000 + 1).toString()
+            }
+            override fun onFinish() {
+                timer.visibility = View.GONE
+                surfaceView.visibility = View.VISIBLE
+
+                counterStart()
+            }
+        }.start()
+    }
+
+    private fun counterStart() {
+        pause_btn.setImageResource(R.drawable.pause)
+        timerTask = timer(period = 10) {
+            time ++
+            val sec = time / 100
+            val milli = time % 100
+
+            runOnUiThread {
+                txtTime?.text = "${sec} : ${milli}"
+            }
+        }
+    }
+
+    private fun pause() {
+        pause_btn.setImageResource(R.drawable.play_button)
+        timerTask?.cancel()
     }
 
     override fun onStart() {
@@ -192,7 +176,6 @@ class LaunchActivity : AppCompatActivity() {
     var score : Float? = null
     var status = "stand"
     var count = 0
-//    var mediaplayer : MediaPlayer?= null
 
     // open camera
     private fun openCamera() {
@@ -201,7 +184,6 @@ class LaunchActivity : AppCompatActivity() {
                 cameraSource =
                     CameraSource(surfaceView, object : CameraSource.CameraSourceListener {
                         override fun onFPSListener(fps: Int) {
-//                            tvFPS.text = getString("R.string.tfe_pe_tv_fps", fps)
                         }
 
                         override fun onDetectedInfo(
@@ -217,7 +199,7 @@ class LaunchActivity : AppCompatActivity() {
                                 if (index == "stand" && score!! > 0.9) {
                                     if (status == "squat") {
                                         count++
-//                                        Log.d(TAG, count.toString())
+                                        Log.d(TAG, count.toString())
                                         var soundTitle = "count${count%10}"
                                         var res = this@LaunchActivity.resources
                                         var soundId = res.getIdentifier(soundTitle, "raw", this@LaunchActivity.packageName)
@@ -264,116 +246,18 @@ class LaunchActivity : AppCompatActivity() {
         cameraSource?.setClassifier(PoseClassifier.create(this))
     }
 
-    // Initialize spinners to let user select model/accelerator/tracker.
-//    private fun initSpinner() {
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.tfe_pe_models_array,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            // Specify the layout to use when the list of choices appears
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            // Apply the adapter to the spinner
-//            spnModel.adapter = adapter
-//            spnModel.onItemSelectedListener = changeModelListener
-//        }
-//
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.tfe_pe_device_name, android.R.layout.simple_spinner_item
-//        ).also { adaper ->
-//            adaper.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//
-//            spnDevice.adapter = adaper
-//            spnDevice.onItemSelectedListener = changeDeviceListener
-//        }
-//
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.tfe_pe_tracker_array, android.R.layout.simple_spinner_item
-//        ).also { adaper ->
-//            adaper.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//
-//            spnTracker.adapter = adaper
-//            spnTracker.onItemSelectedListener = changeTrackerListener
-//        }
-//    }
-
-    // Change model when app is running
-//    private fun changeModel(position: Int) {
-//        if (modelPos == position) return
-//        modelPos = position
-//        createPoseEstimator()
-//    }
-
-    // Change device (accelerator) type when app is running
-//    private fun changeDevice(position: Int) {
-//        val targetDevice = when (position) {
-//            0 -> Device.CPU
-//            1 -> Device.GPU
-//            else -> Device.NNAPI
-//        }
-//        if (device == targetDevice) return
-//        device = targetDevice
-//        createPoseEstimator()
-//    }
-
-    // Change tracker for Movenet MultiPose model
-//    private fun changeTracker(position: Int) {
-//        cameraSource?.setTracker(
-//            when (position) {
-//                1 -> TrackerType.BOUNDING_BOX
-//                2 -> TrackerType.KEYPOINTS
-//                else -> TrackerType.OFF
-//            }
-//        )
-//    }
-
     private fun createPoseEstimator() {
         // For MoveNet MultiPose, hide score and disable pose classifier as the model returns
         // multiple Person instances.
-        val poseDetector =
-//            {
-//            showPoseClassifier(true)
-//            MoveNet.create(this, device, ModelType.Lightning)
-//            }
-            when (modelPos) {
+        val poseDetector = when (modelPos) {
             0 -> {
                 // MoveNet Lightning (SinglePose)
-//                showPoseClassifier(true)
-//                showDetectionScore(true)
-//                showTracker(false)
                 MoveNet.create(this, device, ModelType.Lightning)
             }
             1 -> {
                 // MoveNet Thunder (SinglePose)
-//                showPoseClassifier(true)
-//                showDetectionScore(true)
-//                showTracker(false)
                 MoveNet.create(this, device, ModelType.Thunder)
             }
-//            2 -> {
-//                /*// MoveNet (Lightning) MultiPose
-//                showPoseClassifier(false)
-//                showDetectionScore(false)
-//                // Movenet MultiPose Dynamic does not support GPUDelegate
-//                if (device == Device.GPU) {
-//                    showToast("Movenet MultiPose does not support GPU. Fallback to CPU.")
-//                }
-//                showTracker(true)
-//                MoveNetMultiPose.create(
-//                    this,
-//                    device,
-//                    Type.Dynamic
-//                )*/
-//            }
-//            3 -> {
-//                // PoseNet (SinglePose)
-//                /*showPoseClassifier(true)
-//                showDetectionScore(true)
-//                showTracker(false)
-//                PoseNet.create(this, device)*/
-//            }
             else -> {
                 null
             }
@@ -382,41 +266,6 @@ class LaunchActivity : AppCompatActivity() {
             cameraSource?.setDetector(detector as PoseDetector)
         }
     }
-
-    // Show/hide the pose classification option.
-//    private fun showPoseClassifier(isVisible: Boolean) {
-//        vClassificationOption.visibility = if (isVisible) View.VISIBLE else View.GONE
-//        if (!isVisible) {
-//            swClassification.isChecked = false
-//        }
-//    }
-
-    // Show/hide the detection score.
-//    private fun showDetectionScore(isVisible: Boolean) {
-//        tvScore.visibility = if (isVisible) View.VISIBLE else View.GONE
-//    }
-
-    // Show/hide classification result.
-    // 없어도 됨
-//    private fun showClassificationResult(isVisible: Boolean) {
-//        val visibility = if (isVisible) View.VISIBLE else View.GONE
-//        tvClassificationValue1.visibility = visibility
-//        tvClassificationValue2.visibility = visibility
-//        tvClassificationValue3.visibility = visibility
-//    }
-
-    // Show/hide the tracking options.
-//    private fun showTracker(isVisible: Boolean) {
-//        if (isVisible) {
-//            // Show tracker options and enable Bounding Box tracker.
-//            vTrackerOption.visibility = View.VISIBLE
-//            spnTracker.setSelection(1)
-//        } else {
-//            // Set tracker type to off and hide tracker option.
-//            vTrackerOption.visibility = View.GONE
-//            spnTracker.setSelection(0)
-//        }
-//    }
 
     private fun requestPermission() {
         when (PackageManager.PERMISSION_GRANTED) {
@@ -436,10 +285,6 @@ class LaunchActivity : AppCompatActivity() {
             }
         }
     }
-
-//    private fun showToast(message: String) {
-//        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-//    }
 
     /**
      * Shows an error message dialog.
