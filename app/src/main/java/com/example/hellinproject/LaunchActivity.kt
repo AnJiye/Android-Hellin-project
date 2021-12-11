@@ -65,9 +65,9 @@ class LaunchActivity : AppCompatActivity() {
     /** Default device is CPU */
     private var device = Device.CPU
 
-    private lateinit var tvClassificationValue1: TextView
-    private lateinit var tvClassificationValue2: TextView
-    private lateinit var tvClassificationValue3: TextView
+//    private lateinit var tvClassificationValue1: TextView
+//    private lateinit var tvClassificationValue2: TextView
+//    private lateinit var tvClassificationValue3: TextView
     private var cameraSource: CameraSource? = null
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -96,9 +96,9 @@ class LaunchActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         surfaceView = findViewById(R.id.surfaceView)
-        tvClassificationValue1 = findViewById(R.id.tvClassificationValue1)
-        tvClassificationValue2 = findViewById(R.id.tvClassificationValue2)
-        tvClassificationValue3 = findViewById(R.id.tvClassificationValue3)
+//        tvClassificationValue1 = findViewById(R.id.tvClassificationValue1)
+//        tvClassificationValue2 = findViewById(R.id.tvClassificationValue2)
+//        tvClassificationValue3 = findViewById(R.id.tvClassificationValue3)
 
         database = FirebaseDatabase.getInstance()
         var databaseRef : DatabaseReference = database!!.reference
@@ -168,7 +168,7 @@ class LaunchActivity : AppCompatActivity() {
 //            val milli = time % 100
 
             runOnUiThread {
-                txtTime?.text = "${min} : ${sec}"
+//                txtTime?.text = "${min} : ${sec}"
             }
         }
     }
@@ -241,18 +241,18 @@ class LaunchActivity : AppCompatActivity() {
                                     status = "squat"
                                 }
 
-                                tvClassificationValue1.text = getString(
-                                    R.string.tfe_pe_tv_classification_value,
-                                    convertPoseLabels(if (it.isNotEmpty()) it[0] else null)
-                                )
-                                tvClassificationValue2.text = getString(
-                                    R.string.tfe_pe_tv_classification_value,
-                                    convertPoseLabels(if (it.size >= 2) it[1] else null)
-                                )
-                                tvClassificationValue3.text = getString(
-                                    R.string.tfe_pe_tv_classification_value,
-                                    convertPoseLabels(if (it.size >= 3) it[2] else null)
-                                )
+//                                tvClassificationValue1.text = getString(
+//                                    R.string.tfe_pe_tv_classification_value,
+//                                    convertPoseLabels(if (it.isNotEmpty()) it[0] else null)
+//                                )
+//                                tvClassificationValue2.text = getString(
+//                                    R.string.tfe_pe_tv_classification_value,
+//                                    convertPoseLabels(if (it.size >= 2) it[1] else null)
+//                                )
+//                                tvClassificationValue3.text = getString(
+//                                    R.string.tfe_pe_tv_classification_value,
+//                                    convertPoseLabels(if (it.size >= 3) it[2] else null)
+//                                )
                             }
                         }
 
