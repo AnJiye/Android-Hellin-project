@@ -13,6 +13,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.profile_setting.*
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     var uid = FirebaseAuth.getInstance().currentUser?.uid
     var database : FirebaseDatabase? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,6 +31,9 @@ class MainActivity : AppCompatActivity() {
 
         // 오늘 날짜
         today_textview.text = now.toString()
+
+        val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
+        val formatted = now.format(formatter)
 
         // 스쿼트 버튼
         squat_btn.setOnClickListener {
@@ -54,8 +59,24 @@ class MainActivity : AppCompatActivity() {
         databaseRef.child("users").child(uid!!).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 username_textview.text = snapshot.child("nickname").value as CharSequence?
-//                var photoUri = snapshot.child("userProfile").value as Uri?
-//                Glide.with(this@MainActivity).load(photoUri).apply(RequestOptions.circleCropTransform()).into(mypage_btn)
+                var time = snapshot.child("exercise").child(formatted).child("squatTime").value as Long?
+                val min = (time?.div(100))?.div(60)
+//                val sec = (time?.div(100))?.rem(60)
+                today_min_textview.text = "${min} 분"
+
+                var count = snapshot.child("exercise").child(formatted).child("squatCount").value
+                if (count == null) {
+                    today_count_textview.text = "0 회"
+                } else {
+                    today_count_textview.text = "${count} 회"
+                }
+
+                var calorie =snapshot.child("exercise").child(formatted).child("squatCalorie").value
+                if (calorie == null) {
+                    today_kcal_textview.text = "0 kcal"
+                } else {
+                    today_kcal_textview.text = "${calorie} kcal"
+                }
             }
             override fun onCancelled(error: DatabaseError) {
             }

@@ -143,7 +143,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/squat_info_btn"
                 android:layout_marginVertical="10dp"
-                android:text="n회"
+                android:text="0회"
                 android:textColor="#929292" />
             <android.widget.Button
                 android:id="@+id/pushup_info_btn"
@@ -152,7 +152,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/pushup_info_btn"
                 android:layout_marginVertical="10dp"
-                android:text="n회"
+                android:text="0회"
                 android:textColor="#929292"/>
             <android.widget.Button
                 android:id="@+id/plank_info_btn"
@@ -161,7 +161,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/plank_info_btn"
                 android:layout_marginVertical="10dp"
-                android:text="n회"
+                android:text="0회"
                 android:textColor="#929292"/>
         </LinearLayout>
     </ScrollView>

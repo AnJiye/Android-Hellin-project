@@ -7,6 +7,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Process
@@ -16,6 +17,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
@@ -25,19 +27,29 @@ import kotlinx.coroutines.launch
 import com.example.hellinproject.camera.CameraSource
 import com.example.hellinproject.data.Device
 import com.example.hellinproject.ml.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_launch.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.concurrent.timer
+import kotlin.math.roundToInt
 
 class LaunchActivity : AppCompatActivity() {
     companion object {
         private const val FRAGMENT_DIALOG = "dialog"
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    var now = LocalDate.now()
     private val TAG = "[IC]LaunchActivity"
     private var time = 0
     private var timerTask : Timer? = null
     private var isRunning = true
+    var uid = FirebaseAuth.getInstance().currentUser?.uid
+    var database : FirebaseDatabase? = null
 
     /** A [SurfaceView] for camera preview.   */
     private lateinit var surfaceView: SurfaceView
@@ -76,6 +88,7 @@ class LaunchActivity : AppCompatActivity() {
             }
         }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
@@ -87,6 +100,12 @@ class LaunchActivity : AppCompatActivity() {
         tvClassificationValue2 = findViewById(R.id.tvClassificationValue2)
         tvClassificationValue3 = findViewById(R.id.tvClassificationValue3)
 
+        database = FirebaseDatabase.getInstance()
+        var databaseRef : DatabaseReference = database!!.reference
+
+        val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
+        val formatted = now.format(formatter)
+
         isPoseClassifier()
 
         if (!isCameraPermissionGranted()) {
@@ -94,6 +113,8 @@ class LaunchActivity : AppCompatActivity() {
         }
 
         // 종료 버튼
+        // 칼로리 - 스쿼트 1세트(30개) 기준 13kcal => 1개당 약 0.44kcal
+        // 추후에 키, 몸무게 기준으로 좀 더 정확하게 측정할 수 있도록 조정 필요
         stop_btn.setOnClickListener {
             pause()
             val intent = Intent(this, ResultSquatActivity::class.java)
@@ -101,6 +122,14 @@ class LaunchActivity : AppCompatActivity() {
             dlg.setTitle("정지")
             dlg.setMessage("운동을 종료하시겠습니까?")
             dlg.setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+                val recordTime = time
+                val recordCount = count
+                val recordCalorie = (count * 0.44).roundToInt()
+
+                databaseRef.child("users").child(uid!!).child("exercise").child(formatted).child("squatTime").setValue(recordTime)
+                databaseRef.child("users").child(uid!!).child("exercise").child(formatted).child("squatCount").setValue(recordCount)
+                databaseRef.child("users").child(uid!!).child("exercise").child(formatted).child("squatCalorie").setValue(recordCalorie)
+
                 startActivity(intent)
                 finish()
             })
@@ -121,6 +150,7 @@ class LaunchActivity : AppCompatActivity() {
                 timer.text = (p0 / 1000 + 1).toString()
             }
             override fun onFinish() {
+                var mediaplayer = MediaPlayer.create(this@LaunchActivity, R.raw.start).start()
                 timer.visibility = View.GONE
                 surfaceView.visibility = View.VISIBLE
 
@@ -133,11 +163,12 @@ class LaunchActivity : AppCompatActivity() {
         pause_btn.setImageResource(R.drawable.pause)
         timerTask = timer(period = 10) {
             time ++
-            val sec = time / 100
-            val milli = time % 100
+            val min = (time / 100) / 60
+            val sec = (time / 100) % 60
+//            val milli = time % 100
 
             runOnUiThread {
-                txtTime?.text = "${sec} : ${milli}"
+                txtTime?.text = "${min} : ${sec}"
             }
         }
     }

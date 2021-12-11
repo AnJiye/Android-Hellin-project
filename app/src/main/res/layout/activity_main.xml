@@ -81,32 +81,47 @@
                     android:layout_width="53dp"
                     android:layout_height="53dp"
                     android:src="@drawable/clock" />
-                <LinearLayout
+                <TextView
+                    android:id="@+id/today_min_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-                    <TextView
-                        android:id="@+id/today_min_textview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" 분"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                    android:text="0 분"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginHorizontal="35dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="개수"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="10dp"
+                    android:textAlignment="center"/>
+                <ImageView
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:src="@drawable/count"/>
+                <TextView
+                    android:id="@+id/today_count_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 회"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
             </LinearLayout>
             <!-- 소모한 칼로리 -->
             <LinearLayout
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginHorizontal="35dp">
+                android:gravity="center">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -120,31 +135,22 @@
                     android:layout_width="53dp"
                     android:layout_height="53dp"
                     android:src="@drawable/calories"/>
-                <LinearLayout
+                <TextView
+                    android:id="@+id/today_kcal_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-                    <TextView
-                        android:id="@+id/today_kcal_textview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" kcal"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                    android:text="0 kcal"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
             </LinearLayout>
             <!-- 정확도 -->
             <LinearLayout
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -156,24 +162,14 @@
                     android:layout_width="53dp"
                     android:layout_height="53dp"
                     android:src="@drawable/accuracy"/>
-                <LinearLayout
+                <TextView
+                    android:id="@+id/today_acc_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-                    <TextView
-                        android:id="@+id/today_acc_textview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" %"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                    android:text="0 %"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
