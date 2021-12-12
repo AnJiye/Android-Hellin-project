@@ -1,15 +1,21 @@
 package com.example.hellinproject
 
 import android.app.Activity
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.hellinproject.Constant.Companion.ALARM_TIMER
+import com.example.hellinproject.Constant.Companion.NOTIFICATION_ID
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -22,11 +28,14 @@ import java.util.*
 
 // !! 앨범에서 사진 선택 안했을 시 FileNotFoundException 처리해야함
 class SettingActivity : AppCompatActivity() {
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    var now = LocalDateTime.now()
     var PICK_IMAGE_FROM_ALBUM = 0
     var photoUri : Any? = null
     var uid = FirebaseAuth.getInstance().currentUser?.uid
     var database : FirebaseDatabase? = null
     var storage : FirebaseStorage? = null
+    lateinit var cal : Calendar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +44,43 @@ class SettingActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
         database = FirebaseDatabase.getInstance()
         var databaseRef : DatabaseReference = database!!.reference
+
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(this, MyReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            this, NOTIFICATION_ID, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        switch1.setOnCheckedChangeListener { _, check ->
+            val toastMessage = if (check) {
+                val repeatInterval : Long = ALARM_TIMER * 1000L
+                alarmManager.setRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    cal.timeInMillis,
+                    repeatInterval,
+                    pendingIntent
+                )
+                val time = SimpleDateFormat("HH:mm").format(cal.time)
+                "${time}에 알림이 설정되었습니다."
+            } else {
+                alarmManager.cancel(pendingIntent)
+                "알림 예약을 취소하였습니다."
+            }
+            Toast.makeText(this, toastMessage.toString(), Toast.LENGTH_SHORT).show()
+        }
+
+        time_btn.setOnClickListener {
+            cal = Calendar.getInstance()
+            val timeSetListener = TimePickerDialog.OnTimeSetListener {timePicker, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY, hour)
+                cal.set(Calendar.MINUTE, minute)
+
+                time_btn.text = SimpleDateFormat("HH:mm").format(cal.time)
+            }
+            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+        }
 
         setting_profile_image_btn.setOnClickListener {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1)

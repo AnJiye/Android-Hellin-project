@@ -140,13 +140,13 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="15dp"/>
 
-            <TimePicker
-                android:id="@+id/time_picker"
-                android:layout_width="300dp"
-                android:layout_height="165dp"
-                android:layout_gravity="center_horizontal"
-                android:timePickerMode="spinner">
-            </TimePicker>
+<!--            <TimePicker-->
+<!--                android:id="@+id/time_picker"-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="165dp"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:timePickerMode="spinner">-->
+<!--            </TimePicker>-->
 
             <Switch
                 android:id="@+id/switch1"
@@ -155,7 +155,21 @@
                 android:text="알림"
                 android:textSize="16sp"
                 android:textColor="@color/text"
-                android:layout_marginHorizontal="40dp" />
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:id="@+id/time_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="@color/text"
+                android:backgroundTint="@color/white"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="end"
+                android:layout_marginRight="30dp"/>
+
 
             <View
                 android:layout_width="match_parent"
