@@ -64,7 +64,11 @@ class MypageActivity : AppCompatActivity() {
                 Glide.with(this@MypageActivity).load(photoUri).apply(RequestOptions.circleCropTransform()).into(mypage_image)
 
                 var count = snapshot.child("exercise").child(formatted).child("squatCount").value
-                squat_info_btn.text = "${count}회"
+                if (count == null) {
+                    squat_info_btn.text = "0회"
+                } else {
+                    squat_info_btn.text = "${count}회"
+                }
             }
             override fun onCancelled(error: DatabaseError) {
             }

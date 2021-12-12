@@ -62,7 +62,11 @@ class MainActivity : AppCompatActivity() {
                 var time = snapshot.child("exercise").child(formatted).child("squatTime").value as Long?
                 val min = (time?.div(100))?.div(60)
 //                val sec = (time?.div(100))?.rem(60)
-                today_min_textview.text = "${min} 분"
+                if (time == null) {
+                    today_min_textview.text = "0 분"
+                } else {
+                    today_min_textview.text = "${min} 분"
+                }
 
                 var count = snapshot.child("exercise").child(formatted).child("squatCount").value
                 if (count == null) {
